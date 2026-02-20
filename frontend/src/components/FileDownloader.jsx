@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import CryptoJS from 'crypto-js';
+import { PostQuantumHybridEncryptor } from '../advanced/crypto/hybridEncryptor.js';
+import { DistributedKeyManager } from '../advanced/crypto/secretSharing.js';
+import init, { StreamingEncryptor } from '../advanced/wasm-pkg/wasm.js';
 
 function FileDownloader() {
   const { fileId } = useParams();
   const [fileInfo, setFileInfo] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [decryptionKey, setDecryptionKey] = useState('');
+  const [urlShare, setUrlShare] = useState('');
+  const [wasmReady, setWasmReady] = useState(false);
+
+  const encryptor = new PostQuantumHybridEncryptor();
+  const keyManager = new DistributedKeyManager();
 
   useEffect(() => {
-    // Extract key from URL fragment
-    const hash = window.location.hash;
-    const keyMatch = hash.match(/key=([^&]*)/);
-    const key = keyMatch ? decodeURIComponent(keyMatch[1]) : '';
+    init().then(() => setWasmReady(true));
 
-    if (!key) {
-      setError('No decryption key found in URL');
+    const hash = window.location.hash;
+    const shareMatch = hash.match(/share=([^&]*)/);
+    const share = shareMatch ? decodeURIComponent(shareMatch[1]) : '';
+
+    if (!share) {
+      setError('No key share found in URL');
     } else {
-      setDecryptionKey(key);
+      setUrlShare(share);
     }
 
     fetchFileInfo(fileId);
@@ -28,9 +35,7 @@ function FileDownloader() {
     try {
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8787';
       const response = await fetch(`${apiUrl}/api/files/${id}/info`);
-      if (!response.ok) {
-        throw new Error('Failed to load file info');
-      }
+      if (!response.ok) throw new Error('Failed to load file info');
       const data = await response.json();
       setFileInfo(data);
     } catch (err) {
@@ -38,74 +43,41 @@ function FileDownloader() {
     }
   };
 
-  const decryptFile = (encryptedData, key) => {
-    // Decrypt using AES
-    const decrypted = CryptoJS.AES.decrypt(encryptedData, key);
-    return decrypted.toString(CryptoJS.enc.Latin1);
-  };
-
   const handleDownload = async () => {
+    if (!wasmReady) return;
     setLoading(true);
-
     try {
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8787';
-      // Step 1: Fetch encrypted file
       const response = await fetch(`${apiUrl}/api/files/${fileId}/download`);
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(errorText || 'Download failed');
-      }
+      if (!response.ok) throw new Error('Download failed');
+      const encryptedData = new Uint8Array(await response.arrayBuffer());
 
-      const encryptedBlob = await response.blob();
+      const iv = encryptedData.slice(0, 12);
+      const encapsulatedKeySize = 1568;
+      const encapsulatedKey = encryptedData.slice(12, 12 + encapsulatedKeySize);
+      const ciphertext = encryptedData.slice(12 + encapsulatedKeySize);
 
-      // Step 2: Read encrypted data
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        try {
-          // Step 3: Decrypt
-          const decryptedData = decryptFile(e.target.result, decryptionKey);
+      const shares = [urlShare, ...fileInfo.shares];
+      const skHex = keyManager.reconstructKey(shares);
+      const quantumSecretKey = new Uint8Array(skHex.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
 
-          if (!decryptedData) {
-            throw new Error('Decryption failed. Check your key.');
-          }
+      const sharedSecret = await encryptor.getSharedSecret(encapsulatedKey, quantumSecretKey);
 
-          // Step 4: Create download link
-          // Convert Latin1 string back to Uint8Array/Blob
-          const n = decryptedData.length;
-          const u8arr = new Uint8Array(n);
-          for (let i = 0; i < n; i++) {
-            u8arr[i] = decryptedData.charCodeAt(i);
-          }
+      const wasmEncryptor = new StreamingEncryptor(sharedSecret.slice(0, 32));
+      const decryptedBuffer = wasmEncryptor.decrypt_chunk(ciphertext, 0);
 
-          const blob = new Blob([u8arr], { type: fileInfo.contentType || 'application/octet-stream' });
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = fileInfo.filename;
-          document.body.appendChild(a);
-          a.click();
-
-          window.URL.revokeObjectURL(url);
-          document.body.removeChild(a);
-          setLoading(false);
-
-          // Refresh file info to update download count
-          fetchFileInfo(fileId);
-        } catch (err) {
-          setError('Decryption failed: ' + err.message);
-          setLoading(false);
-        }
-      };
-
-      reader.onerror = () => {
-        setError('Failed to read encrypted file');
-        setLoading(false);
-      };
-
-      reader.readAsText(encryptedBlob);
+      const blob = new Blob([decryptedBuffer], { type: fileInfo.contentType || 'application/octet-stream' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileInfo.filename;
+      a.click();
+      window.URL.revokeObjectURL(url);
+      setLoading(false);
 
     } catch (err) {
-      setError('Download failed: ' + err.message);
+      console.error(err);
+      setError('Decryption failed: ' + err.message);
       setLoading(false);
     }
   };
@@ -115,30 +87,17 @@ function FileDownloader() {
 
   return (
     <div className="downloader">
-      <h2>Download File</h2>
-
-      {error && <div className="error" style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
-
+      <h2>Advanced Download</h2>
+      {!wasmReady && <p style={{ color: 'orange' }}>Initializing Wasm...</p>}
+      {error && <div className="error" style={{ color: 'red' }}>{error}</div>}
       <div className="file-info" style={{ border: '1px solid #ccc', padding: '15px', borderRadius: '8px', marginBottom: '15px' }}>
         <p><strong>File:</strong> {fileInfo.filename}</p>
-        <p><strong>Size:</strong> {Math.round(fileInfo.size / 1024)} KB</p>
-        <p><strong>Expires:</strong> {new Date(fileInfo.expiresAt).toLocaleString()}</p>
-        <p><strong>Downloads:</strong> {fileInfo.downloadCount} / {fileInfo.maxDownloads}</p>
+        <p><strong>Security:</strong> Post-Quantum Hybrid (Kyber-1024) + Wasm</p>
+        <p><strong>Shares:</strong> 1 in URL, {fileInfo.shares.length} from server</p>
       </div>
-
-      <button
-        onClick={handleDownload}
-        disabled={loading || fileInfo.downloadCount >= fileInfo.maxDownloads || !decryptionKey}
-        style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}
-      >
+      <button onClick={handleDownload} disabled={loading || !urlShare || !wasmReady}>
         {loading ? 'Decrypting...' : 'Download & Decrypt'}
       </button>
-
-      {fileInfo.downloadCount >= fileInfo.maxDownloads && (
-        <p style={{ color: 'orange', marginTop: '10px' }}>
-          Maximum download limit reached.
-        </p>
-      )}
     </div>
   );
 }

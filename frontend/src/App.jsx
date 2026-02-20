@@ -21,7 +21,7 @@ function App() {
         </main>
 
         <footer style={{ marginTop: '60px', borderTop: '1px solid #eee', paddingTop: '20px', fontSize: '14px', color: '#666' }}>
-          <p>Files are encrypted in your browser before upload. The server never sees your unencrypted data.</p>
+          <p>Files are encrypted in your browser before upload using Post-Quantum Hybrid Encryption. Keys are split via Shamir's Secret Sharing.</p>
         </footer>
       </div>
     </Router>
