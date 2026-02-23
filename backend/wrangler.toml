@@ -5,7 +5,8 @@ compatibility_date = "2023-10-01"
 [vars]
 CLOUDFLARE_ACCOUNT_ID = "YOUR_ACCOUNT_ID"
 R2_BUCKET_NAME = "serverless-file-sharing-bucket"
-# R2_ACCESS_KEY_ID and R2_SECRET_ACCESS_KEY should be set as secrets
+R2_ACCESS_KEY_ID = "dummy-access-key"
+R2_SECRET_ACCESS_KEY = "dummy-secret-key"
 
 [[kv_namespaces]]
 binding = "FILE_METADATA"

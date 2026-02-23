@@ -7,7 +7,7 @@ export class ImmutableAuditLog {
       userId,
       action,
       timestamp,
-      txHash: '0x' + crypto.randomUUID().replace(/-/g, '')
+      txHash: '0x' + globalThis.crypto.randomUUID().replace(/-/g, '')
     };
     console.log(`[Blockchain Audit] ${action} on ${fileId} by ${userId} at ${timestamp}. TX: ${event.txHash}`);
     return event;

@@ -26,12 +26,6 @@ function FileUploader() {
       const { quantumPublicKey, quantumSecretKey } = await encryptor.generateHybridKeypair();
       const fileBuffer = await file.arrayBuffer();
 
-      // Hybrid Encrypt Metadata (getting the sharedSecret)
-      const kex = await encryptor.hybridEncrypt(new Uint8Array(0), quantumPublicKey);
-      // Wait, I need the sharedSecret to initialize the Wasm encryptor
-      // I'll update hybridEncrypt to return the sharedSecret too
-      // Actually, I just did that in the previous write_file
-
       // Let's get a sharedSecret for the actual file encryption
       // I'll use a slightly modified flow to get the secret for Wasm
       const { sharedSecret } = await encryptor.generateSharedSecretForWasm(quantumPublicKey);

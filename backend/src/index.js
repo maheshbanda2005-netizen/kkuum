@@ -58,7 +58,7 @@ async function handleUploadUrl(request, env) {
       });
     }
 
-    const fileId = crypto.randomUUID();
+    const fileId = globalThis.crypto.randomUUID();
     const key = `uploads/${fileId}/${filename}`;
 
     const R2 = new S3Client({
@@ -101,6 +101,7 @@ async function handleUploadUrl(request, env) {
     });
 
   } catch (error) {
+    console.error("Worker Error:", error);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
