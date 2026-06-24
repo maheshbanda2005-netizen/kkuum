@@ -1,0 +1,178 @@
+Resolving dependencies...
+Downloading packages...
+  font_awesome_flutter 10.12.0 (11.0.0 available)
+  google_fonts 6.3.3 (8.1.0 available)
+  matcher 0.12.18 (0.12.20 available)
+  meta 1.17.0 (1.18.3 available)
+  package_config 2.2.0 (3.0.0 available)
+  test_api 0.7.9 (0.7.12 available)
+  url_launcher_android 6.3.30 (6.3.32 available)
+  vector_math 2.2.0 (2.4.0 available)
+Got dependencies!
+8 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+00:00 +0: loading /app/trip_nest/test/widget_test.dart
+Error: Couldn't resolve the package 'flutter_gen' in 'package:flutter_gen/gen_l10n/app_localizations.dart'.
+lib/main.dart:3:8: Error: Not found: 'package:flutter_gen/gen_l10n/app_localizations.dart'
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+       ^
+lib/screens/home_screen.dart:4:8: Error: Not found: 'package:flutter_gen/gen_l10n/app_localizations.dart'
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+       ^
+lib/screens/destination_list_screen.dart:3:8: Error: Not found: 'package:flutter_gen/gen_l10n/app_localizations.dart'
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+       ^
+lib/screens/ai_assistant_screen.dart:3:8: Error: Not found: 'package:flutter_gen/gen_l10n/app_localizations.dart'
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+       ^
+lib/screens/profile_screen.dart:2:8: Error: Not found: 'package:flutter_gen/gen_l10n/app_localizations.dart'
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+       ^
+lib/screens/destination_detail_screen.dart:3:8: Error: Not found: 'package:flutter_gen/gen_l10n/app_localizations.dart'
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+       ^
+lib/main.dart:24:9: Error: Not a constant expression.
+        AppLocalizations.delegate,
+        ^^^^^^^^^^^^^^^^
+lib/main.dart:74:20: Error: The getter 'AppLocalizations' isn't defined for the type '_MainNavigationState'.
+ - '_MainNavigationState' is from 'package:trip_nest/main.dart' ('lib/main.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+            label: AppLocalizations.of(context)?.home ?? 'Home'
+                   ^^^^^^^^^^^^^^^^
+lib/main.dart:79:20: Error: The getter 'AppLocalizations' isn't defined for the type '_MainNavigationState'.
+ - '_MainNavigationState' is from 'package:trip_nest/main.dart' ('lib/main.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+            label: AppLocalizations.of(context)?.explore ?? 'Explore'
+                   ^^^^^^^^^^^^^^^^
+lib/main.dart:84:20: Error: The getter 'AppLocalizations' isn't defined for the type '_MainNavigationState'.
+ - '_MainNavigationState' is from 'package:trip_nest/main.dart' ('lib/main.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+            label: AppLocalizations.of(context)?.aiHelper ?? 'AI Helper'
+                   ^^^^^^^^^^^^^^^^
+lib/main.dart:89:20: Error: The getter 'AppLocalizations' isn't defined for the type '_MainNavigationState'.
+ - '_MainNavigationState' is from 'package:trip_nest/main.dart' ('lib/main.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+            label: AppLocalizations.of(context)?.profile ?? 'Profile'
+                   ^^^^^^^^^^^^^^^^
+lib/screens/home_screen.dart:15:17: Error: The getter 'AppLocalizations' isn't defined for the type 'HomeScreen'.
+ - 'HomeScreen' is from 'package:trip_nest/screens/home_screen.dart' ('lib/screens/home_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+    final loc = AppLocalizations.of(context)!;
+                ^^^^^^^^^^^^^^^^
+lib/screens/destination_list_screen.dart:79:40: Error: Couldn't find constructor 'EdgeInsets.bottom'.
+              margin: const EdgeInsets.bottom(20),
+                                       ^^^^^^
+lib/screens/destination_list_screen.dart:13:17: Error: The getter 'AppLocalizations' isn't defined for the type 'DestinationListScreen'.
+ - 'DestinationListScreen' is from 'package:trip_nest/screens/destination_list_screen.dart' ('lib/screens/destination_list_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+    final loc = AppLocalizations.of(context)!;
+                ^^^^^^^^^^^^^^^^
+lib/screens/ai_assistant_screen.dart:42:17: Error: The getter 'AppLocalizations' isn't defined for the type '_AIAssistantScreenState'.
+ - '_AIAssistantScreenState' is from 'package:trip_nest/screens/ai_assistant_screen.dart' ('lib/screens/ai_assistant_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+    final loc = AppLocalizations.of(context)!;
+                ^^^^^^^^^^^^^^^^
+lib/screens/ai_assistant_screen.dart:125:17: Error: The getter 'AppLocalizations' isn't defined for the type 'EmergencyScreen'.
+ - 'EmergencyScreen' is from 'package:trip_nest/screens/ai_assistant_screen.dart' ('lib/screens/ai_assistant_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+    final loc = AppLocalizations.of(context)!;
+                ^^^^^^^^^^^^^^^^
+lib/screens/profile_screen.dart:10:17: Error: The getter 'AppLocalizations' isn't defined for the type 'ProfileScreen'.
+ - 'ProfileScreen' is from 'package:trip_nest/screens/profile_screen.dart' ('lib/screens/profile_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+    final loc = AppLocalizations.of(context)!;
+                ^^^^^^^^^^^^^^^^
+lib/utils/app_theme.dart:28:18: Error: The argument type 'CardTheme' can't be assigned to the parameter type 'CardThemeData?'.
+ - 'CardTheme' is from 'package:flutter/src/material/card_theme.dart' ('/opt/flutter/packages/flutter/lib/src/material/card_theme.dart').
+ - 'CardThemeData' is from 'package:flutter/src/material/card_theme.dart' ('/opt/flutter/packages/flutter/lib/src/material/card_theme.dart').
+      cardTheme: CardTheme(
+                 ^
+lib/screens/destination_detail_screen.dart:15:17: Error: The getter 'AppLocalizations' isn't defined for the type 'DestinationDetailScreen'.
+ - 'DestinationDetailScreen' is from 'package:trip_nest/screens/destination_detail_screen.dart' ('lib/screens/destination_detail_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+    final loc = AppLocalizations.of(context)!;
+                ^^^^^^^^^^^^^^^^
+00:00 +0 -1: loading /app/trip_nest/test/widget_test.dart [E]
+  Failed to load "/app/trip_nest/test/widget_test.dart":
+  Compilation failed for testPath=/app/trip_nest/test/widget_test.dart: Error: Couldn't resolve the package 'flutter_gen' in 'package:flutter_gen/gen_l10n/app_localizations.dart'.
+  lib/main.dart:3:8: Error: Not found: 'package:flutter_gen/gen_l10n/app_localizations.dart'
+  import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+         ^
+  lib/screens/home_screen.dart:4:8: Error: Not found: 'package:flutter_gen/gen_l10n/app_localizations.dart'
+  import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+         ^
+  lib/screens/destination_list_screen.dart:3:8: Error: Not found: 'package:flutter_gen/gen_l10n/app_localizations.dart'
+  import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+         ^
+  lib/screens/ai_assistant_screen.dart:3:8: Error: Not found: 'package:flutter_gen/gen_l10n/app_localizations.dart'
+  import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+         ^
+  lib/screens/profile_screen.dart:2:8: Error: Not found: 'package:flutter_gen/gen_l10n/app_localizations.dart'
+  import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+         ^
+  lib/screens/destination_detail_screen.dart:3:8: Error: Not found: 'package:flutter_gen/gen_l10n/app_localizations.dart'
+  import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+         ^
+  lib/main.dart:24:9: Error: Not a constant expression.
+          AppLocalizations.delegate,
+          ^^^^^^^^^^^^^^^^
+  lib/main.dart:74:20: Error: The getter 'AppLocalizations' isn't defined for the type '_MainNavigationState'.
+   - '_MainNavigationState' is from 'package:trip_nest/main.dart' ('lib/main.dart').
+  Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+              label: AppLocalizations.of(context)?.home ?? 'Home'
+                     ^^^^^^^^^^^^^^^^
+  lib/main.dart:79:20: Error: The getter 'AppLocalizations' isn't defined for the type '_MainNavigationState'.
+   - '_MainNavigationState' is from 'package:trip_nest/main.dart' ('lib/main.dart').
+  Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+              label: AppLocalizations.of(context)?.explore ?? 'Explore'
+                     ^^^^^^^^^^^^^^^^
+  lib/main.dart:84:20: Error: The getter 'AppLocalizations' isn't defined for the type '_MainNavigationState'.
+   - '_MainNavigationState' is from 'package:trip_nest/main.dart' ('lib/main.dart').
+  Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+              label: AppLocalizations.of(context)?.aiHelper ?? 'AI Helper'
+                     ^^^^^^^^^^^^^^^^
+  lib/main.dart:89:20: Error: The getter 'AppLocalizations' isn't defined for the type '_MainNavigationState'.
+   - '_MainNavigationState' is from 'package:trip_nest/main.dart' ('lib/main.dart').
+  Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+              label: AppLocalizations.of(context)?.profile ?? 'Profile'
+                     ^^^^^^^^^^^^^^^^
+  lib/screens/home_screen.dart:15:17: Error: The getter 'AppLocalizations' isn't defined for the type 'HomeScreen'.
+   - 'HomeScreen' is from 'package:trip_nest/screens/home_screen.dart' ('lib/screens/home_screen.dart').
+  Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+      final loc = AppLocalizations.of(context)!;
+                  ^^^^^^^^^^^^^^^^
+  lib/screens/destination_list_screen.dart:79:40: Error: Couldn't find constructor 'EdgeInsets.bottom'.
+                margin: const EdgeInsets.bottom(20),
+                                         ^^^^^^
+  lib/screens/destination_list_screen.dart:13:17: Error: The getter 'AppLocalizations' isn't defined for the type 'DestinationListScreen'.
+   - 'DestinationListScreen' is from 'package:trip_nest/screens/destination_list_screen.dart' ('lib/screens/destination_list_screen.dart').
+  Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+      final loc = AppLocalizations.of(context)!;
+                  ^^^^^^^^^^^^^^^^
+  lib/screens/ai_assistant_screen.dart:42:17: Error: The getter 'AppLocalizations' isn't defined for the type '_AIAssistantScreenState'.
+   - '_AIAssistantScreenState' is from 'package:trip_nest/screens/ai_assistant_screen.dart' ('lib/screens/ai_assistant_screen.dart').
+  Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+      final loc = AppLocalizations.of(context)!;
+                  ^^^^^^^^^^^^^^^^
+  lib/screens/ai_assistant_screen.dart:125:17: Error: The getter 'AppLocalizations' isn't defined for the type 'EmergencyScreen'.
+   - 'EmergencyScreen' is from 'package:trip_nest/screens/ai_assistant_screen.dart' ('lib/screens/ai_assistant_screen.dart').
+  Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+      final loc = AppLocalizations.of(context)!;
+                  ^^^^^^^^^^^^^^^^
+  lib/screens/profile_screen.dart:10:17: Error: The getter 'AppLocalizations' isn't defined for the type 'ProfileScreen'.
+   - 'ProfileScreen' is from 'package:trip_nest/screens/profile_screen.dart' ('lib/screens/profile_screen.dart').
+  Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+      final loc = AppLocalizations.of(context)!;
+                  ^^^^^^^^^^^^^^^^
+  lib/utils/app_theme.dart:28:18: Error: The argument type 'CardTheme' can't be assigned to the parameter type 'CardThemeData?'.
+   - 'CardTheme' is from 'package:flutter/src/material/card_theme.dart' ('/opt/flutter/packages/flutter/lib/src/material/card_theme.dart').
+   - 'CardThemeData' is from 'package:flutter/src/material/card_theme.dart' ('/opt/flutter/packages/flutter/lib/src/material/card_theme.dart').
+        cardTheme: CardTheme(
+                   ^
+  lib/screens/destination_detail_screen.dart:15:17: Error: The getter 'AppLocalizations' isn't defined for the type 'DestinationDetailScreen'.
+   - 'DestinationDetailScreen' is from 'package:trip_nest/screens/destination_detail_screen.dart' ('lib/screens/destination_detail_screen.dart').
+  Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppLocalizations'.
+      final loc = AppLocalizations.of(context)!;
+                  ^^^^^^^^^^^^^^^^
+  .
+00:00 +0 -1: Some tests failed.

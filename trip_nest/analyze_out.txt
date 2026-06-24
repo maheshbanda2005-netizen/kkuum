@@ -1,0 +1,24 @@
+Analyzing trip_nest...
+
+  error • Target of URI doesn't exist: 'package:flutter_gen/gen_l10n/app_localizations.dart' • lib/main.dart:3:8 • uri_does_not_exist
+  error • The values in a const list literal must be constants • lib/main.dart:24:9 • non_constant_list_element
+  error • Undefined name 'AppLocalizations' • lib/main.dart:24:9 • undefined_identifier
+  error • Undefined name 'AppLocalizations' • lib/main.dart:74:20 • undefined_identifier
+  error • Undefined name 'AppLocalizations' • lib/main.dart:79:20 • undefined_identifier
+  error • Undefined name 'AppLocalizations' • lib/main.dart:84:20 • undefined_identifier
+  error • Undefined name 'AppLocalizations' • lib/main.dart:89:20 • undefined_identifier
+warning • Unused import: 'package:google_fonts/google_fonts.dart' • lib/screens/ai_assistant_screen.dart:2:8 • unused_import
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/ai_assistant_screen.dart:132:64 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/destination_detail_screen.dart:145:46 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/destination_detail_screen.dart:174:64 • deprecated_member_use
+  error • The class 'EdgeInsets' doesn't have a constant constructor 'bottom' • lib/screens/destination_list_screen.dart:77:40 • const_with_undefined_constructor
+warning • Unused import: 'package:trip_nest/screens/destination_list_screen.dart' • lib/screens/home_screen.dart:6:8 • unused_import
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/home_screen.dart:50:96 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/home_screen.dart:68:65 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/home_screen.dart:101:53 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/home_screen.dart:159:58 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/home_screen.dart:167:65 • deprecated_member_use
+   info • 'activeColor' is deprecated and shouldn't be used. Use activeThumbColor instead. This feature was deprecated after v3.31.0-2.0.pre • lib/screens/profile_screen.dart:102:53 • deprecated_member_use
+  error • The argument type 'CardTheme' can't be assigned to the parameter type 'CardThemeData?'.  • lib/utils/app_theme.dart:28:18 • argument_type_not_assignable
+
+20 issues found. (ran in 23.5s)
