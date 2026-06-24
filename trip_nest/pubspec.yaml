@@ -1,0 +1,24 @@
+name: trip_nest
+description: "A smart tourist travel app."
+publish_to: 'none'
+version: 1.0.0+1
+environment:
+  sdk: ^3.11.0
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  provider: ^6.1.2
+  url_launcher: ^6.3.1
+  google_fonts: ^6.2.1
+  font_awesome_flutter: ^10.8.0
+  intl: any
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+flutter:
+  generate: true
+  uses-material-design: true

@@ -1,0 +1,19 @@
+{
+  "@@locale": "en",
+  "appTitle": "TripNest",
+  "home": "Home",
+  "explore": "Explore",
+  "aiHelper": "AI Helper",
+  "profile": "Profile",
+  "searchHint": "Search destinations...",
+  "trendingNow": "Trending Now",
+  "planTrip": "Plan Your Trip",
+  "seeAll": "See All",
+  "quickInfo": "Quick Information",
+  "watchVideo": "Watch Video",
+  "viewMap": "View Map",
+  "emergency": "Emergency Assistance",
+  "sosDesc": "Press the SOS button to alert emergency services.",
+  "activateSos": "ACTIVATE SOS",
+  "myAccount": "My Account"
+}

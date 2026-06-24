@@ -1,0 +1,19 @@
+{
+  "@@locale": "hi",
+  "appTitle": "ट्रिपनेस्ट",
+  "home": "होम",
+  "explore": "एक्सप्लोर",
+  "aiHelper": "AI सहायक",
+  "profile": "प्रोफ़ाइल",
+  "searchHint": "गंतव्य खोजें...",
+  "trendingNow": "अभी ट्रेंडिंग",
+  "planTrip": "अपनी यात्रा की योजना बनाएं",
+  "seeAll": "सभी देखें",
+  "quickInfo": "त्वरित जानकारी",
+  "watchVideo": "वीडियो देखें",
+  "viewMap": "मानचित्र देखें",
+  "emergency": "आपातकालीन सहायता",
+  "sosDesc": "आपातकालीन सेवाओं को सचेत करने के लिए SOS बटन दबाएं।",
+  "activateSos": "SOS सक्रिय करें",
+  "myAccount": "मेरा खाता"
+}
